@@ -1,0 +1,493 @@
+@use "global" as *;
+
+/* Transparent Header */
+    body.transparent-header {
+    
+        .site-header {
+            position: absolute;
+            width:100%;            
+        }
+    }
+
+/* Show Page Title */
+    /*body.no-page-title {
+    
+        .page-heading-wrapper {
+            display: none;
+        }
+    }*/
+
+/* Header */   
+    .site-header {     
+        background-color: $primary;
+
+        .inside-header {
+            padding:0;
+            justify-content: flex-start;
+            flex-wrap: wrap;            
+            align-items: center;
+
+            @media( max-width:$md ) {
+                flex-direction: row;
+                padding:0;
+                max-width: 100%;
+            }
+
+            // Logo
+                .site-logo {                    
+                    margin-right: $double-spacing;                    
+
+                    @media( max-width:$md ) {
+                        margin:0;                        
+                        order:1;
+                        flex:1;
+                        margin-left:24px;
+                    }
+
+                    a {
+                        display: flex;
+                    }
+
+                    img {
+                        width:110px;
+                        
+                    }
+                }
+
+            // Burger
+                #mobile-menu-control-wrapper {
+                    background-color: transparent;
+                    margin:0;
+                    width:64px;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+
+                    @media( max-width:$md ) {
+                        display: flex;
+                        flex-wrap: wrap;
+                        order:3;            
+                    }
+
+                    .menu-bar-items {
+
+                        .menu-bar-item {
+
+                            a { 
+                                line-height: 30px;                    
+                                padding:1px 16px;
+                            
+                                .gp-icon svg {
+                                    fill:$primary;
+                                }
+
+                                &:hover,
+                                &:focus {
+                                    .gp-icon svg {
+                                        fill:$secondary;
+                                    } 
+                                }
+                            }
+                        }
+                    }
+
+                    .menu-toggle {   
+                        background-color: transparent;                            
+                        height: 100%;           
+                        justify-content: center;
+                        align-items: center;                        
+
+                        @media( max-width:$md ) {
+                            display: flex;
+                        }
+                                                 
+                        .gp-icon svg {                            
+                            width:24px;
+                            height:24px;                
+                            top:0;                        
+                            fill:$primary; 
+                            transition: $transition;    
+                        }
+
+                        &:hover,
+                        &:focus {
+                            .gp-icon svg {
+                                fill:$secondary;
+                            } 
+                        }
+
+                        /* Stylized Burger Icon */
+                        background-color: transparent;                                                  
+                        display: flex;
+                        padding:20px 0 19px;
+                        border:none;
+                        border-radius: 0;
+
+                        svg {                                                                                                                
+
+                            rect {
+                                fill:$primary;
+                                transition: $transition;    
+                            }
+                        }
+
+                        &:hover,
+                        &:focus {               
+                            background-color: $secondary;             
+
+                            svg {
+                                
+                                rect {
+                                    fill:$secondary;
+                                }
+
+                                line {
+                                    stroke:$primary;
+                                }
+                            }
+                        }                        
+                    }
+                }
+
+            // Main Menu
+                #site-navigation.main-navigation {
+                    background-color: transparent;
+                    margin-left:0;
+                    flex:1;
+
+                    @media( max-width:$md ) {
+                        order:4;
+                        background-color:$primary80;
+                    }
+
+                    &:not(.toggled) {
+                    
+                        .main-nav {
+                        
+                            ul {
+                            
+                                @media( max-width:$md ) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    &.toggled {
+
+                        @media( max-width:$md ) {
+                            margin:0;  
+                            padding:24px;                                                  
+                        }
+
+                        @media( max-width:$md ) {
+                            padding:24px 16px;
+                        }
+                    }
+
+                    @media( max-width:$md ) {
+                        flex-basis: 100%;
+                    }
+
+                    .inside-navigation {
+                        margin:0;        
+
+                        @media( max-width:$md ) {
+                            max-width: 100%;
+                        }               
+
+                        #primary-menu.main-nav {                            
+                        
+                            ul {
+                                gap:36px;
+                            
+                                li {
+
+                                    @media( max-width:$md ) {
+                                        text-align: right;
+                                    }
+
+                                    a {                                        
+                                        color:$white;
+                                        padding:16px 0;
+                                        font-size: 18px;
+                                        line-height: 28px;                                        
+                                        border-bottom: 3px solid transparent;
+                                        outline: none;
+                                        
+                                        &:hover,
+                                        &:focus {
+                                            border-bottom-color:$secondary;
+                                            color:$secondary;
+                                        }                  
+
+                                        @media( max-width:$md ) {                                                                                        
+                                            display: inline-block;;
+                                            padding:0 16px 10px 0;
+                                            border-top:none;
+                                            border-bottom: 1px solid rgba(255,255,255,0.2);                                            
+                                            margin-bottom: 10px;                 
+                                            width:100%;                           
+
+                                            &:hover,
+                                            &:focus {
+                                                
+                                            }
+                                        }
+                                    }
+
+                                    &.current-menu-item {
+                                    
+                                        a {                                            
+                                            color:$secondary;
+                                            border-bottom-color:$secondary;                                            
+                                        }
+                                    }
+
+                                    &.menu-item-has-children {                                        
+
+                                        a {
+                                            padding-right:21px;
+                                            position: relative;                                            
+                                    
+                                            .dropdown-menu-toggle {                                                
+                                                position: absolute;
+                                                padding:0;
+                                                top:50%;
+                                                transform: translateY(-50%);
+                                                right:0;
+                                                width:15px;
+                                                height:15px;
+                                                margin-top:-2px;
+                                                display: flex;
+
+                                                .gp-icon svg {
+                                                    width:100%;
+                                                    height:100%;
+                                                }
+                                            }
+                                        }
+
+                                        .sub-menu {
+                                            padding:16px 0;
+                                            pointer-events: auto;
+                                            background-color: $background;
+                                            box-shadow:0 0 1px #aaa;
+                                            display: flex;
+                                            flex-direction: column;
+                                            gap:10px;
+
+                                            li {
+                                            
+                                                a {
+                                                    color:$primary;
+                                                    padding:0 16px;
+
+                                                    &:hover,
+                                                    &:focus {
+                                                        color:$secondary;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    &.menu-cart,
+                                    &.menu-myaccount {
+
+                                        a {
+                                            font-size: 0;
+                                            display: flex;
+
+                                            &:hover,
+                                            &:focus {
+
+                                                &:after {
+                                                    background-color: $primary;
+                                                }
+                                            }
+
+                                            &:after {
+                                                content:'';
+                                                @include font(h5);
+                                                -webkit-mask-repeat: no-repeat;
+                                                mask-repeat: no-repeat; 
+                                                -webkit-mask-position:center;
+                                                mask-position: center;
+                                                -webkit-mask-size:30px 30px;
+                                                mask-size:30px 30px;
+                                                width:30px;
+                                                height:30px;
+                                                display: block;
+                                                background-color: $heading;
+                                            }
+                                        }
+                                    }
+
+                                    &.menu-cart {
+                                        
+                                        a:after {
+                                            -webkit-mask-image:url(../../assets/img/cart.svg);
+                                            mask-image:url(../../assets/img/cart.svg);
+                                        }
+                                    }
+
+                                    &.menu-myaccount {                                        
+                                        
+                                        a:after {                                            
+                                            -webkit-mask-image:url(../../assets/img/user.svg);
+                                            mask-image:url(../../assets/img/user.svg);
+                                        }
+                                    }
+                                }
+                            }
+                        }  
+
+                        .menu-bar-items {
+
+                            @media( max-width:$md ) {
+                                display: none;
+                            }
+
+                            .menu-bar-item {
+
+                                &:last-child {
+                                
+                                    a {
+                                        padding-right: 0;
+                                    }
+                                }
+                        
+                                a {                 
+                                    line-height: $lh6;
+                                    display: flex;
+
+                                    .gp-icon svg {
+                                        width:21px;
+                                        height:21px;                
+                                        top:0;                        
+                                        fill:$primary; 
+                                        transition: $transition;                                   
+                                    } 
+
+                                    &:hover,
+                                    &:focus {
+                                        .gp-icon svg {
+                                            fill:$secondary;
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }          
+                }
+
+                .donatesidebar-location {
+
+                    @media( max-width:$md ) {
+                        order:2;
+                    }
+
+                    p {
+                        margin:0;
+                    }
+
+                    a {
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 28px;
+                        text-transform: uppercase;
+                        padding:18px 24px;
+                        background-color: $skydisco;
+                        color:$blueblues;
+                        display: block;
+
+                        @media( max-width:$md ) {
+                            font-size: 16px;                            
+                        }
+
+                        &:hover,
+                        &:focus {
+                            background-color: $secondary;
+                            color:$white;
+                        }                        
+                    }
+                }
+        }   
+
+        &.transparentheader {
+            
+            .header-top {
+
+                .left-menu {        
+
+                    .burger-wrapper {
+                    
+                        .burger-inner {
+
+                            .burgerbar {
+                                background-color: $white;
+                            }
+                        }
+                    }                
+
+                    #site-navigation {
+                        .inside-navigation {
+                            .main-nav {
+                                ul.desktop-primary-menu {
+                                    & > li {
+                                        & > a {
+                                            color:$white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .right-menu {                        
+
+                    .header-top-search-wrapper {
+                        a {
+                            .gp-icon {                                
+                                svg {
+                                    fill:$white;
+                                }
+                            }
+                        }
+                    }
+
+                    #secondary-navigation {
+                        .main-nav {
+                            ul.secondary-menu {
+                                & > li {
+                                    & > a {
+                                        color:$white;
+                                    }
+
+                                    &#menu-search-wrapper {
+                                    
+                                        a {
+                                            background-color: $white;
+                                        }
+                                    }
+
+                                    &#menu-cart-wrapper {
+                                    
+                                        a {
+                                        
+                                            @media( max-width:$md ) {
+                                                background-color: $white;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
+        }         
+    }
+
+    

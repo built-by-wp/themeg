@@ -1,0 +1,158 @@
+@use "global" as *;
+
+/* Footer */
+     .site-footer {                    
+
+        #footer-widgets {            
+            background-color: $purplerock;
+            color:$white;
+            padding:24px 24px;
+        
+            .footer-widgets-container {
+                padding:0;
+                max-width: 100%;
+
+                .inner-padding {
+                    padding:0;
+                }           
+            
+                .inside-footer-widgets {
+                    margin:0;
+                    flex-direction: column;
+
+                    & > div:not(:last-child) {
+                        margin-bottom: 0;
+                    }
+                    .footer-widget-1,
+                    .footer-widget-2,
+                    .footer-widget-3 {
+
+                        & > .widget {
+                            max-width: 1400px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+
+                        a {
+                            color:$white;
+                        }
+
+                        p {
+                            @include font(h5);
+                            margin:0;
+                        }
+                    }
+
+                    .footer-widget-1 {
+                    
+                        .wp-block-columns {
+                            justify-content: space-between;
+
+                            @media( max-width:$lg ) {
+                                flex-direction: column;
+                                gap:24px;
+                            }
+                            
+                            .wp-block-column {
+                                flex:initial;
+                                display: flex;
+                                gap:24px;
+                                flex-wrap: wrap;
+
+                                @media( max-width:$lg ) {
+                                    justify-content: flex-start;
+                                }
+                                
+                                & > * {                                        
+                                    margin:0;
+                                }     
+
+                                &:first-child {
+                                
+                                    @media( max-width:$md ) {
+                                    
+                                        p:first-child {
+                                            order:1;
+                                            width:100%;
+                                        }
+                                    }
+                                }
+
+                                &:last-child {
+                                    gap:51px;
+
+                                    @media( max-width:$sm ) {
+                                        justify-content: space-between;
+                                    }
+                                }
+
+                                .wp-block-social-links {
+                                
+                                    .wp-social-link {
+
+                                        .wp-block-social-link-anchor {
+                                        
+                                            svg {
+                                                width:32px;
+                                                height: 32px;
+                                            }
+                                        }
+
+                                        &.wp-social-link-tiktok {
+                                        
+                                            .wp-block-social-link-anchor {
+                                        
+                                                svg {
+                                                    width:22px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }                           
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+/* Scroll  To Top */
+    #toTop {
+        border-radius: 100px 100px 0 0;
+        pointer-events: auto;
+        transition: opacity .4s ease-in-out,background .2s ease-in-out;
+        right:75px;
+        background-color: $primary;
+        bottom: -5px;
+        height: 35px;
+        position: fixed;
+        text-align: center;
+        width: 48px;
+        z-index: 100000;
+        line-height: 1;
+        cursor:pointer;
+        display:none;
+        box-shadow:5px 5px 30px rgba(0,0,0,.06);
+        transition: $transition;
+    }
+
+    #toTop:before {
+        content: '';		
+        position:absolute;
+        top:50%;		
+        left:50%;
+        margin-top:3px;
+        border-color: $white;
+        border-width: 0 2px 2px 0;
+        border-style: solid;
+        padding: 3px;
+        transition:all 0.2s ease 0s;
+        transform: translate(-50%, -50%) rotate(225deg);
+        -webkit-transform: translate(-50%, -50%) rotate(225deg);
+    }
+
+    #toTop:hover {
+        background-color:$secondary;	
+        bottom:0;
+    }

@@ -1,0 +1,12 @@
+@use "../components/global" as *; 
+
+.donate-faq-wrapper {
+
+    .wp-block-cover__background {
+        width:calc( 100% * 2 / 3 );
+
+        @media( max-width:$sm ) {
+            width:100%;
+        }
+    }
+}

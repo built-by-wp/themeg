@@ -1,0 +1,84 @@
+@use "../components/global" as *;
+
+.contact-cover {
+
+    .wp-block-cover__inner-container {
+
+        @media( max-width:$sm ) {
+            max-width: 100%;
+        }
+    
+        & > .wp-block-columns {
+            gap:100px;
+            margin:0;
+
+            @media( max-width:$lg ) {
+                gap:48px;
+            }
+
+            @media( max-width:$md ) {
+                gap:24px;
+            }
+
+            @media( max-width:$sm ) {
+                flex-direction: column;
+            }
+
+            & > .wp-block-column {
+            
+                &:first-child {
+                    flex:1 !important;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .wp-block-group {
+                    
+                        .wp-block-group__inner-container {
+                            padding:0;
+
+                            & > *:last-child {
+                                margin:0;
+
+                                & > *:last-child {
+                                    margin:0;
+                                }
+                            }
+
+                            .wp-block-columns {
+                                margin-bottom: 16px !important;
+                            
+                                .wp-block-column {
+                                
+                                    &:first-child {
+                                        flex:0 0 70px !important;
+                                    }
+
+                                    &:last-child {
+                                        flex:1 !important;
+                                    }
+
+                                    p {
+                                        margin:0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:last-child {
+                    flex: 0 0 320px !important;
+
+                    @media( max-width:$sm ) {
+                        flex:1 !important;
+                    }
+                }
+            }
+        }
+
+        textarea {
+            height: 100px;
+        }
+    }
+}

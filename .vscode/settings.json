@@ -1,0 +1,27 @@
+{
+	"liveSassCompile.settings.excludeList": [
+		"/**/node_modules/**",
+		"/.vscode/**"
+	],
+	"liveSassCompile.settings.autoprefix": [
+		"> 1%",
+		"last 2 versions"
+	],
+	"liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+        },
+        {
+            "extensionName": ".min.css",
+            "format": "compressed",
+        }
+    ],
+	"[javascript]": {
+		"editor.tabSize": 4,
+		"editor.formatOnSave": false,
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+	},
+	"phpcs.executablePath": "./vendor/bin/phpcs",
+	"phpcs.standard": "./phpcs.xml",
+}
