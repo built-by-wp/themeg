@@ -349,7 +349,7 @@
         align-items: flex-start; 
     
         .wp-block-cover__image-background {
-            object-fit: none;
+            object-fit: cover;
         }
     }
 
@@ -389,4 +389,20 @@
                 padding:$half-spacing;
             }      
         }
+    }
+
+    /* Donate */
+
+    .donate-banner {
+        height: 100%;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .donate-form {
+        padding:50px 0px;
     }

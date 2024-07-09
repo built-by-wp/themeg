@@ -5841,8 +5841,8 @@ address {
           align-items: flex-start;
 }
 .map-wrapper .wp-block-cover__image-background {
-  -o-object-fit: none;
-     object-fit: none;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .worktogether-box-wrapper {
@@ -5884,6 +5884,22 @@ address {
   .worktogether-box-wrapper .wp-block-column:not(:last-child) {
     padding: 16px;
   }
+}
+
+/* Donate */
+.donate-banner {
+  height: 100%;
+}
+.donate-banner img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.donate-form {
+  padding: 50px 0px;
 }
 
 .single:not(.single-product) #page .site-content #primary {
