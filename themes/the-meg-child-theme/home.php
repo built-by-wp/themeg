@@ -135,15 +135,17 @@
 
                             while ( $schedule_query->have_posts() ) {
                                 $schedule_query->the_post();
+                                global $post;
                                 $postThumb = get_the_post_thumbnail_url( $post, 'full' );	
+                                $show_thumbnail_in_event_page = get_field( 'show_thumbnail_in_event_page' );
                                 ?>
                                 <div class="blog-list-content-wrapper">
                                     <?php
-                                        if ( !empty( $postThumb ) ) {
+                                        if ( !empty( $postThumb ) && $show_thumbnail_in_event_page ) {
                                             ?>
-                                            <div class="blog-list-thumb">
-                                                <img src="<?php echo $postThumb; ?>">
-                                            </div>
+                                                <div class="blog-list-thumb">
+                                                    <img src="<?php echo $postThumb; ?>">
+                                                </div>
                                             <?php
                                         }
                                     ?>
@@ -179,9 +181,12 @@
                             $year = '';
                             while ( $query->have_posts() ) {
                                 $query->the_post();
+                                global $post;
 
                                 $postThumb = get_the_post_thumbnail_url( $post, 'full' );	
                                 $dateLink = get_month_link( get_the_time('Y'), get_the_time('n') );	
+
+                                $show_thumbnail_in_event_page = get_field( 'show_thumbnail_in_event_page' );
 
                                 if ( $year != get_the_date( 'Y' ) ) {
                                     if ( $year != '' ) {
@@ -195,7 +200,7 @@
                                 ?>
                                 <div class="blog-list-content-wrapper">
                                     <?php
-                                        if ( !empty( $postThumb ) ) {
+                                        if ( !empty( $postThumb ) && $show_thumbnail_in_event_page ) {
                                             ?>
                                             <div class="blog-list-thumb">
                                                 <img src="<?php echo $postThumb; ?>">
