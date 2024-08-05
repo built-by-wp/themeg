@@ -29,6 +29,30 @@
 .halfandhalf-stage {
     padding:0;
 
+    &.media-left {
+
+        .wp-block-cover__inner-container {
+        
+            .wp-block-columns {
+            
+                @media( max-width:$md ) {
+                    flex-direction: column-reverse;       
+                    
+                    .wp-block-column {
+
+                        &:first-child {
+                            padding-bottom: $double-spacing;
+                        }
+
+                        &:last-child {
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }        
+    }
+
     .wp-block-cover__inner-container {
 
         & > * {
@@ -47,34 +71,41 @@
 
             @media( max-width:$md ) {
                 flex-direction: column;
+
+                
             }            
 
-            .wp-block-column {                
+            .wp-block-column {      
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                @media( max-width:$md ) {
+                    padding:$double-spacing 0;
+
+                    &:first-child {
+                        padding-bottom: 0;
+                    }
+                }
+            
+                & > * {
+                    max-width: 540px;
+                    width:100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding:0 24px;
+
+                    @media( max-width:$sm ) {
+                        padding:0 16px;
+                    }
+                }
+
+                & > *:last-child {
+                    margin-bottom:0;
+                }          
 
                 &:first-child {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-
-                    @media( max-width:$md ) {
-                        padding:$double-spacing 0;
-                    }
-                
-                    & > * {
-                        max-width: 540px;
-                        width:100%;
-                        margin-left: auto;
-                        margin-right: auto;
-                        padding:0 24px;
-
-                        @media( max-width:$sm ) {
-                            padding:0 16px;
-                        }
-                    }
-
-                    & > *:last-child {
-                        margin-bottom:0;
-                    }
+                    
                 }
 
                 .wp-block-image {
@@ -118,6 +149,10 @@
 
     @media( max-width:$sm ) {
         gap:16px;
+    }
+
+    .link-group-inner {
+        padding:0;
     }
 
     .wp-block-column {        
@@ -172,10 +207,41 @@
                 }
 
                 .wp-block-group {
-                    padding:36px 24px;
 
-                    & > *:first-child {
-                        margin-bottom: 21px;
+                    .link-group-block-wrapper {
+                        padding:36px 24px;
+
+                        & > *:first-child {
+                            margin-bottom: 21px;
+                        }
+
+                        .arrow-bottom {
+                            color:$primary;
+                            position: relative;
+                            align-self: flex-start;
+                            padding-right: 44px;
+                        
+                            &:after {
+                                content:'';
+                                -webkit-mask-image:url(../../assets/img/btn-arrow-bottom.svg);
+                                mask-image:url(../../assets/img/btn-arrow-bottom.svg);      
+                                -webkit-mask-repeat: no-repeat;
+                                mask-repeat: no-repeat; 
+                                -webkit-mask-position:center;
+                                mask-position: center;
+                                -webkit-mask-size:24px 24px;
+                                mask-size:24px 24px;            
+                                width:24px;
+                                height:24px;
+                                background-color:$primary;
+                                position:absolute;
+                                right:15px;
+                                top:50%;
+                                transform: translateY(-50%);            
+                                display: block;
+                                transition: $transition;
+                            }
+                        }
                     }
                 }
             }
@@ -193,11 +259,42 @@
                     min-height: 400px;
                 }
                 
-                .wp-block-group {
-                    padding:36px 24px;
+                .wp-block-group {                    
 
-                    & > *:first-child {
-                        margin-bottom: 21px;
+                    .link-group-block-wrapper {
+                        padding:36px 24px;
+
+                        & > *:first-child {
+                            margin-bottom: 21px;
+                        }
+
+                        .arrow-bottom {
+                            color:$primary;
+                            position: relative;
+                            align-self: flex-start;
+                            padding-right: 44px;
+                        
+                            &:after {
+                                content:'';
+                                -webkit-mask-image:url(../../assets/img/btn-arrow-bottom.svg);
+                                mask-image:url(../../assets/img/btn-arrow-bottom.svg);      
+                                -webkit-mask-repeat: no-repeat;
+                                mask-repeat: no-repeat; 
+                                -webkit-mask-position:center;
+                                mask-position: center;
+                                -webkit-mask-size:24px 24px;
+                                mask-size:24px 24px;            
+                                width:24px;
+                                height:24px;
+                                background-color:$primary;
+                                position:absolute;
+                                right:15px;
+                                top:50%;
+                                transform: translateY(-50%);            
+                                display: block;
+                                transition: $transition;
+                            }
+                        }
                     }
                 }
             }

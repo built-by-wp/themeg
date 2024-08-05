@@ -18,9 +18,17 @@ if( !empty($block['align']) ) {
 }
 
 $url = get_field('url') ?: '';
+$background_color = get_field('background_color') ?: 'transparent';
+$background_hover_color = get_field('background_hover_color') ?: 'transparent';
 
 ?>
-<div class="link-group-block-wrapper is-alignment-<?php echo $block['align']; ?> <?php echo esc_attr($classes); ?>">
+
+
+<div class="link-group-block-wrapper is-alignment-<?php echo $block['align']; ?> <?php echo esc_attr($classes); ?>" 
+    style="background-color: <?php echo $background_color; ?>;"
+    onmouseover="this.style.backgroundColor='<?php echo $background_hover_color; ?>';" 
+    onmouseout="this.style.backgroundColor='<?php echo $background_color; ?>';"
+>
     <?php
         if ( !is_admin() )
         {

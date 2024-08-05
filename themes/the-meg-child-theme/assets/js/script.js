@@ -290,6 +290,9 @@ $j(function(){
 				}
 			});
 		});
+
+	// ACF Color Picker Default Swatches
+
 }); 
 
 $j( window ).resize( function() {	

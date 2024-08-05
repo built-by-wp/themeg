@@ -56,7 +56,7 @@
 
                 <div class="blog-list-wrapper">
                     <?php
-                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+                        /*$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
                         $args = array(
                             'post_type' => 'post',
@@ -113,6 +113,112 @@
                             }
                             echo '</div>';
                         }                        
+                        wp_reset_postdata();*/
+
+                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+                        // Query for scheduled posts
+                        $schedule_args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => -1, // Fetch all scheduled posts
+                            'post_status' => 'future',
+                            'orderby' => 'post_date',
+                            'order' => 'ASC',
+                        );
+
+                        $schedule_query = new WP_Query( $schedule_args );
+
+                        // Display scheduled posts
+                        if ( $schedule_query->have_posts() ) {
+                            echo '<div class="blog-list-year">Upcoming Events</div>';
+                            echo '<div class="blog-list">'; 
+
+                            while ( $schedule_query->have_posts() ) {
+                                $schedule_query->the_post();
+                                $postThumb = get_the_post_thumbnail_url( $post, 'full' );	
+                                ?>
+                                <div class="blog-list-content-wrapper">
+                                    <?php
+                                        if ( !empty( $postThumb ) ) {
+                                            ?>
+                                            <div class="blog-list-thumb">
+                                                <img src="<?php echo $postThumb; ?>">
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
+                                    <div class="blog-list-content">
+                                        <div class="blog-list-date">
+                                            <?php echo get_the_date( 'F j, Y' ); ?>
+                                        </div>
+                                        <div class="blog-list-title">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php echo get_the_title(); ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            echo '</div>';
+                        }
+
+                        wp_reset_postdata();
+
+                        // Query for regular posts
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 8,
+                            'paged' => $paged,
+                        );
+
+                        $query = new WP_Query( $args );
+
+                        // Display regular posts
+                        if ( $query->have_posts() ) {
+                            $year = '';
+                            while ( $query->have_posts() ) {
+                                $query->the_post();
+
+                                $postThumb = get_the_post_thumbnail_url( $post, 'full' );	
+                                $dateLink = get_month_link( get_the_time('Y'), get_the_time('n') );	
+
+                                if ( $year != get_the_date( 'Y' ) ) {
+                                    if ( $year != '' ) {
+                                        echo '</div>';
+                                    }
+                                    $year = get_the_date('Y');
+                                    echo '<div class="blog-list-year">' . $year . '</div>';
+                                    echo '<div class="blog-list">';
+                                }
+
+                                ?>
+                                <div class="blog-list-content-wrapper">
+                                    <?php
+                                        if ( !empty( $postThumb ) ) {
+                                            ?>
+                                            <div class="blog-list-thumb">
+                                                <img src="<?php echo $postThumb; ?>">
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
+                                    <div class="blog-list-content">
+                                        <div class="blog-list-date">
+                                            <?php echo get_the_date( 'F j, Y' ); ?>
+                                        </div>
+                                        <div class="blog-list-title">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php echo get_the_title(); ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            echo '</div>';
+                        }
+
                         wp_reset_postdata();
                     ?>
                     <div class="loadmore-wrapper">

@@ -50,7 +50,16 @@
     }
 
 	$posts_page_id = get_option('page_for_posts');
+	
 	$blog_url = get_permalink($posts_page_id);
+	$programs_page_url = get_permalink( 12 );
+
+	if ( is_singular( 'post') ) {
+		$backURL = $blog_url;
+	}
+	else if ( is_singular( 'program' ) ) {
+		$backURL = $programs_page_url;
+	}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_do_microdata( 'article' ); ?>>
@@ -72,7 +81,7 @@
 
 						<div class="singlepost-header-left">
 							<p class="arrow-back">
-								<a href="<?php echo $blog_url; ?>">Back</a>
+								<a href="<?php echo $backURL; ?>">Back</a>
 							</p>
 							<?php		
 								//HOOK generate_before_entry_title @since 0.1

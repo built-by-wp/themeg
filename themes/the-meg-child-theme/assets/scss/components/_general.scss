@@ -128,12 +128,12 @@
     textarea, 
     select {
         color:$foreground;
-        background-color: $white;        
-        border-bottom:1px solid $border;
-        padding:10px 16px;
+        background-color: $white;       
+        border:none; 
+        border-bottom:2px solid #f9f2ea;
+        padding:10px 0;
         border-radius: $border-radius;
-        transition: $transition;
-        
+        transition: $transition;        
         
         &:hover,
         &:focus {
@@ -688,7 +688,7 @@
 
         .tablet-spacer-50 {
             height: 50px !important;
-        }
+        }        
     }
 
     @media( max-width:$sm ) {

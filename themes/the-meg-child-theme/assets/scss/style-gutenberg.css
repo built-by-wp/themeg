@@ -525,8 +525,9 @@ body {
 .block-editor .editor-styles-wrapper select {
   color: #252422;
   background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
-  padding: 10px 16px;
+  border: none;
+  border-bottom: 2px solid #f9f2ea;
+  padding: 10px 0;
   border-radius: 0px;
   -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
@@ -3031,6 +3032,8 @@ body {
 .editor-styles-wrapper .link-group-block-wrapper,
 .block-editor .editor-styles-wrapper .link-group-block-wrapper {
   height: 100%;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
 }
 .editor-styles-wrapper .link-group-block-wrapper a,
 .block-editor .editor-styles-wrapper .link-group-block-wrapper a {

@@ -193,6 +193,25 @@
 							'prepend' => '',
 							'append' => '',
 						),
+						array(
+							'key' => 'field_662f5d7df3302',
+							'label' => 'Open',
+							'name' => 'open',
+							'aria-label' => '',
+							'type' => 'true_false',
+							'instructions' => 'Set to true if the accordion item should be open by default.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 0, // false
+							'ui' => 1,
+							'ui_on_text' => 'True',
+							'ui_off_text' => 'False',
+						),
 					),
 					'location' => array(
 						array(

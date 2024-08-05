@@ -772,6 +772,7 @@
 /* Link Group */
     .link-group-block-wrapper {
         height: 100%;
+        transition: $transition;
     
         a {
             color:inherit;

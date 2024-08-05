@@ -692,5 +692,28 @@
 
 			wp_reset_postdata();
 			die();
-		}		
+		}	
+
+	// ACF
+		function my_acf_input_admin_footer() 
+		{    
+			?>
+				<script type="text/javascript">
+					(function($) {
+						
+						acf.add_filter('color_picker_args', function( args, $field ){		
+							args.palettes = ['#203AAF','#4d61bf','#7989cf','#d2d8ef','#FE5924','#fe7a50','#ffbda7','#82C5F5','#b4dcf9' ,'#e6f3fd','#F4E6D6','#fdfaf7','#722B7E'];
+							
+							
+							// return
+							return args;
+									
+						});
+						
+					})(jQuery); 
+				</script>
+			<?php				
+		}
+
+		add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
 ?>

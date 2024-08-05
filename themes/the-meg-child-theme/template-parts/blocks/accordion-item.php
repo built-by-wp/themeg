@@ -29,14 +29,22 @@ $template = array(
 );
 
 $title = get_field('title') ?: '';
+$open = get_field('open') ?: false;
+
+$classOpen = '';
+$block = '';
+if ( $open ) { 
+    $classOpen = 'active'; 
+    $block="style='display:block;'"; 
+}
 ?>
-<div class="accordion-item-wrapper <?php echo esc_attr($classes); ?>">    
+<div class="accordion-item-wrapper <?php echo esc_attr($classes); ?> <?php echo $classOpen; ?>">    
     <div class="accordion-item-title">
         <?php echo $title; ?>
         <div class="accordion-plusminus">
         </div>
     </div>
-    <div class="accordion-item-content">
+    <div class="accordion-item-content" <?php echo $block; ?>>
         <?php echo '<InnerBlocks />'; ?>  
     </div>  
 </div>
