@@ -20,7 +20,7 @@ if( !empty($block['align']) ) {
 $url = get_field('url') ?: '';
 $background_color = get_field('background_color') ?: 'transparent';
 $background_hover_color = get_field('background_hover_color') ?: 'transparent';
-
+$background_focus_color = get_field('background_focus_color') ?: $background_hover_color;
 ?>
 
 
@@ -28,6 +28,10 @@ $background_hover_color = get_field('background_hover_color') ?: 'transparent';
     style="background-color: <?php echo $background_color; ?>;"
     onmouseover="this.style.backgroundColor='<?php echo $background_hover_color; ?>';" 
     onmouseout="this.style.backgroundColor='<?php echo $background_color; ?>';"
+    onclick="this.style.backgroundColor='<?php echo $background_focus_color; ?>';" 
+    onmousedown="this.style.backgroundColor='<?php echo $background_focus_color; ?>';" 
+    onmouseup="this.style.backgroundColor='<?php echo $background_hover_color; ?>';" 
+    tabindex="0"
 >
     <?php
         if ( !is_admin() )

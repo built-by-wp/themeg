@@ -799,17 +799,19 @@
             padding:0 0 24px 0;               
 
             @media( max-width:$sm ) {
-                padding:0 0 16px 0;   
+                padding:16px 0 0 0;   
             }
 
             .link-group-inner {
-                padding:0;
+                padding:0;                
 
                 .wp-block-image {
                     margin-bottom: 24px;
 
                     @media( max-width:$sm ) {
-                        margin-bottom: 16px;
+                        margin-bottom: 0;
+                        margin-top:16px;
+                        order:1;
                     }
         
                     img {
